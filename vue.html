@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<h4>数据绑定</h4>
+	<div id="app">
+		<section>
+			<div v-for="person in persons">
+			<div>name : {{person.name}}</div>
+			<div>age : {{person.age}}</div>
+			<div>address : {{person.address}}</div>
+			{{top}}
+			</div>
+		</section>
+	</div>
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message">
+</div>
+	
+	<script>
+		var app6 = new Vue({
+			el: '#app-6',
+			data: {
+				message: 'Hello Vue!'
+			}
+		});
+		var vm = new Vue({
+			el:'#app',
+			data : {
+				top:13,
+				persons:[{
+					name:'张三',
+					age:18,
+					address:'广东'
+				}]
+			} 
+		});
+	</script>
+</body>
+</html>

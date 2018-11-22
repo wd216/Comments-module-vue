@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+	<style>
+		#slider img{
+			width:100%;
+			height: 250px;
+		}
+	</style>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+		<h1 class="mui-title">知乎日报</h1>
+	</header>
+	<div id="slider" class="mui-slider" >
+	  <div class="mui-slider-group mui-slider-loop">
+		<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+		<div class="mui-slider-item mui-slider-item-duplicate">
+		  <a href="#">
+			<img class="imgs" src="">
+		  </a>
+		</div>
+		<!-- 第一张 -->
+		<div class="mui-slider-item">
+		  <a href="#">
+			<img class="imgs" src="">
+			<p class="mui-slider-title"></p>
+		  </a>
+		</div>
+		<!-- 第二张 -->
+		<div class="mui-slider-item">
+		  <a href="#">
+			<img class="imgs" src="http:\">
+			<p class="mui-slider-title"></p>
+		  </a>
+		</div>
+		<!-- 第三张 -->
+		<div class="mui-slider-item">
+		  <a href="#">
+			<img class="imgs" src="http:\">
+			<p class="mui-slider-title"></p>
+		  </a>
+		</div>
+		<!-- 第四张 -->
+		<div class="mui-slider-item">
+		  <a href="#">
+			<img class="imgs" src="">
+			<p class="mui-slider-title"></p>
+		  </a>
+		</div>
+		<!-- 第五张 -->
+		<div class="mui-slider-item">
+		<a href="#">
+			<img class="imgs" src="">
+			<p class="mui-slider-title"></p>
+		</a>
+		</div>
+		<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+		<div class="mui-slider-item mui-slider-item-duplicate">
+		  <a href="#">
+			<img class="imgs"  src="">
+		  </a>
+		</div>
+	  </div>
+	</div>
+	</div>
+	<ul id="app" class="mui-table-view">
+		<li class="mui-table-view-cell mui-media" v-for="s in st">
+				<a href="javascript:;">
+					<img  class="mui-media-object mui-pull-right" :src="s.images">
+					<div class="mui-media-body">
+						
+						<p class='mui-ellipsis'>{{ s.title }}</p>
+					</div>
+				</a>
+				<div>{{str.title}}</div>
+			</li> 
+	</ul>
+	<div class="title">
+</body>
+<script>
+	mui.ajax('https://news-at.zhihu.com/api/4/news/latest',{
+		dataType:'json',//服务器返回json格式数据
+		type:'get',//HTTP请求类型
+		success:function(data){
+			var vm = new Vue({
+				el:'#app',
+				data:{
+					st:data.stories,
+					str:data.top_stories
+			});
+	}
+});
+			
+// 			var top_imgs = document.getElementsByClassName("imgs");
+// 			var top_slider = document.getElementsByClassName("mui-slider-title");
+// 			 mui.each(data.top_stories,function(i,v){				 
+// 				top_imgs[0].setAttribute("src",v.image);
+// 				top_slider[0].innerText=v.title;
+// 				top_imgs[i].setAttribute("src",v.image);
+// 				top_slider[i].innerText=v.title;
+// 			 });
+// 			 mui.each(data.stories,function(i,v){
+// 				
+// 				li = document.createElement("li");
+// 				li.setAttribute("class","mui-table-view-cell mui-media");
+// 				
+// 				a = document.createElement("a");
+// 				
+// 				img = document.createElement("img");
+// 				img.setAttribute("class","mui-media-object mui-pull-right");
+// 				img.setAttribute("src",v.images);
+// 				
+// 				div = document.createElement("div");
+// 				div.setAttribute("class","mui-media-body");
+// 				
+// 				p = document.createElement("p");
+// 				p.setAttribute("class","mui-ellipsis");
+// 				p.innerText = v.title;
+// 				
+// 				div.appendChild(p);
+// 				a.appendChild(img);
+// 				a.appendChild(div);
+// 				li.appendChild(a);
+// 				ul = document.getElementById("ul");
+// 				ul.appendChild(li);
+// 				
+// 			 });
+//		}
+//		});
+</script>
+<script>
+	//获得slider插件对象
+var gallery = mui('.mui-slider');
+gallery.slider({
+  interval:2000//自动轮播周期，若为0则不自动播放，默认为0；
+});
+</script>
+</html>

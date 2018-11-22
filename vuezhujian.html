@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="js/zhujian.js"></script>
+	<script src="js/incbutton.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h3>组件示例</h3>
+		<div>
+			<incbutton></incbutton>
+		</div>
+		<clock :color="'blue'" :size="'50px'" >
+			<h1>这是一个表</h1>
+		</clock>
+		<hr>
+		<clock :color="color.green" :size="size">
+			<div>这是1个表</div>
+			<div>这是2个表</div>
+			<div>这是3个表</div>
+		</clock>
+	</div>
+	
+	<script>
+		// 定义组件
+		
+		//注册组件,名为 incbutton
+		
+		Vue.component('incbutton',myIncrement);
+		
+		Vue.component('clock',myclock);
+		var vm = new Vue({
+			el:'#app',
+			data : {
+				color: {
+					red:'yello',
+					green:'green'
+				},
+				size:'30px'
+			}
+		})
+	</script>
+	
+	
+	
+</body>
+</html>

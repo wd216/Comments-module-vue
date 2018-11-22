@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>评论模块</title>
+		<link rel="stylesheet" href="../css/index.css"/>
+		<script src="https://cdn.bootcss.com/vue/2.5.13/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<comment></comment>
+		</div>
+		
+		<script type="module">
+			import commentComp from "./comment-comp.js";
+			
+			Vue.component('comment',commentComp);
+			
+			var vm = new Vue({
+				el: '#root'
+			})
+		</script>
+		
+		
+	</body>
+</html>
